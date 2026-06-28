@@ -1,0 +1,2 @@
+import { GrammyModuleOptions } from './interfaces';
+export declare const GrammyConfigurableModuleClass: import("@nestjs/common").ConfigurableModuleCls<GrammyModuleOptions<import("grammy").Context>, "forRoot", "forRootAsync", {}>, GRAMMY_MODULE_OPTIONS: string | symbol, GRAMMY_OPTIONS_TYPE: GrammyModuleOptions<import("grammy").Context> & Partial<{}>, GRAMMY_ASYNC_OPTIONS_TYPE: import("@nestjs/common").ConfigurableModuleAsyncOptions<GrammyModuleOptions<import("grammy").Context>, "forRootAsync"> & Partial<{}>;
