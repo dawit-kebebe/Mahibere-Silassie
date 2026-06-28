@@ -7,5 +7,10 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   server: {
     allowedHosts: true
+  },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
   }
 })
