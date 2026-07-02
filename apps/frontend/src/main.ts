@@ -9,6 +9,7 @@ import { PiniaColada } from '@pinia/colada';
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import { FaFlag, RiZhihuFill } from "oh-vue-icons/icons";
 import { router } from './router';
+import VueApexCharts from "vue3-apexcharts";
 
 addIcons(FaFlag, RiZhihuFill);
 
@@ -29,6 +30,8 @@ app.use(PiniaColada, {
   },
 })
 app.use(router);
+app.use(VueApexCharts);
+
 app.component("v-icon", OhVueIcon);
 
 app.mount("#app");

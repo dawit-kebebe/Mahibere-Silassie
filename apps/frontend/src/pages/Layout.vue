@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { navRoutes } from '@/router/index.ts';
 import { useUserStore } from '@/store/user.store';
-import { useI18n } from 'vue-i18n';
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
 import Header from '../components/Header.vue';
+import { computed } from 'vue';
 
-const { t } = useI18n()
 const userStore = useUserStore()
 
-const navbarItems = navRoutes(userStore);
+const route = useRoute();
+const navbarRoutes = navRoutes(userStore);
+
+const navbarItems = computed(() => {
+  return navbarRoutes.filter(i => typeof i.name === 'string').map(rt => ({
+	...rt,
+    current: route.path === rt.path	
+  }))
+});
+
 </script>
 <template>
 	<Header 
@@ -17,8 +25,7 @@ const navbarItems = navRoutes(userStore);
 		}"
 		:navbar-items="navbarItems"
 	/>
-	<section class="max-w-7xl mx-auto px-4 py-2">
-		<h1>Test: {{ t('app_name') }}</h1>
+	<section class="max-w-7xl mx-auto px-2 py-2">
 		<router-view />
 	</section>
 </template>

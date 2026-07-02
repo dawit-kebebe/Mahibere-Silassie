@@ -4,7 +4,7 @@ import { initFlowbite } from 'flowbite';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { loadLocaleMessages } from './i18n';
-import Layout from './pages/Layout.vue';
+import { RouterView } from 'vue-router';
 
 const { locale } = useI18n()
 const userStore = useUserStore()
@@ -40,5 +40,5 @@ onMounted(async () => {
 </script>
 
 <template>
-    <Layout />
+    <RouterView />
 </template>

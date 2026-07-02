@@ -3,11 +3,21 @@ import Logo from '@/assets/Logo.vue';
 import DarkModeToggle from './DarkModeToggle.vue';
 import LanguageToggle from './LanguageToggle.vue';
 import type { RouteRecordRaw } from 'vue-router';
+import { initCollapses } from 'flowbite';
 
 defineProps<{
     onLogout: () => void;
     navbarItems: (RouteRecordRaw & {current?: boolean})[];
 }>();
+
+import { onMounted } from 'vue';
+import { initDropdowns } from 'flowbite'
+
+onMounted(() => {
+  initDropdowns();
+  initCollapses();
+})
+
 </script>
 
 <template>
@@ -20,7 +30,7 @@ defineProps<{
                 
                 <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
                     <DarkModeToggle />
-                    <LanguageToggle />
+                    <LanguageToggle /> 
                     <button data-collapse-toggle="navbar-language" type="button"
                         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
                         aria-controls="navbar-language" aria-expanded="false">
@@ -35,7 +45,7 @@ defineProps<{
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
                     <ul
                         class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-                        <template v-for="item in navbarItems" :key="item.name">
+                        <template v-for="(item, i) in navbarItems" :key="`${item.path}-${i}`">
                         <li>
                             <router-link :to="item.path" :aria-current="item.current ? 'page' : undefined"
                                 :class="item.current ? 'text-white bg-brand md:bg-transparent md:text-fg-brand dark:text-white dark:bg-brand dark:md:bg-transparent dark:md:text-primary-300' : 'text-heading dark:text-gray-300'"
