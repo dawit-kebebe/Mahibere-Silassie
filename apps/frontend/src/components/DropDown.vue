@@ -8,7 +8,7 @@
         <slot name="trigger" />
     </button>
     <div 
-        class="bg-transparent absolute left-1/2 -translate-x-1/2 mt-2 w-fit h-fit" 
+        class="bg-transparent absolute left-1/2 -translate-x-1/2 z-40 mt-2 w-fit h-fit" 
         :class="show ? 'block' : 'hidden'"
         tabindex="-1"
     >

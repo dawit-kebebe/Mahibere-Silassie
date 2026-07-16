@@ -25,7 +25,6 @@ const radialChart = reactive({
                     show: true,
                 },
                 value: {
-                    color: "#111",
                     fontSize: "20px",
                     show: true,
                     formatter: (day: number) => {
@@ -39,6 +38,10 @@ const radialChart = reactive({
     stroke: {
         lineCap: "round",
     },
+    
+    fill: {
+        colors: "currentColor",
+    },
 
     labels: ["Days Left"],
 });
@@ -49,7 +52,6 @@ onMounted(() => {
 })
 
 const yearCalendar = computed(() => Kenat.getYearCalendar(thisYear));
-console.log("yearCalendar: ", yearCalendar.value);
 
 </script>
 
@@ -102,11 +104,11 @@ console.log("yearCalendar: ", yearCalendar.value);
 
 
     <section class="w-full grid grid-cols-2">
-        <div class="flex items-center justify-center min-w-0 w-full h-48 sm:h-58 md:h-96">
+        <div class="flex items-center justify-center text-brand min-w-0 w-full h-48 sm:h-58 md:h-96">
             <apexchart height="100%" width="100%" :type="radialChart.chart.type" :options="radialChart"
                 :series="radialChart.series"></apexchart>
         </div>
-        <div class="flex items-center justify-center min-w-0 w-full h-48 sm:h-58 md:h-96">
+        <div class="flex items-center justify-center text-brand min-w-0 w-full h-48 sm:h-58 md:h-96">
             <apexchart height="100%" width="100%" :type="radialChart.chart.type" :options="radialChart"
                 :series="radialChart.series"></apexchart>
         </div>
@@ -119,7 +121,7 @@ console.log("yearCalendar: ", yearCalendar.value);
     </section>
 
     <section class="w-full mt-8">
-        <h1 class="text-center font-semibold text-xl md:text-3xl">Monthly Contribution</h1>
+        <h5 class="text-xl font-semibold text-heading text-center mb-6">Monthly Contribution</h5>
         <div class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-2 md:gap-4">
             <div :data-tooltip-target="`tooltip-default-${month.month}`"
                 class="grid grid-cols-7 content-start rounded-base shadow-base overflow-hidden cursor-pointer"
@@ -134,7 +136,8 @@ console.log("yearCalendar: ", yearCalendar.value);
                     :key="`header-${header}`">
                     <span>{{ header.charAt(0) }}</span>
                 </div>
-                <div class="w-full h-10 flex justify-center items-center" :class="day?.isToday ? 'bg-danger-soft':'bg-success-soft'" v-for="day in month.days"
+                <div class="w-full h-10 flex justify-center items-center border border-success-medium"
+                    :class="day?.isToday ? 'bg-danger-soft' : 'bg-success-soft'" v-for="day in month.days"
                     :key="`day-${day}`">
                     <span v-if="day">{{ day.ethiopian?.day }}</span>
                     <span v-else>&nbsp;</span>

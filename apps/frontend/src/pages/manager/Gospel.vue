@@ -11,10 +11,10 @@ const tabs = ref<"open" | "closed" | "all">("all");
 </script>
 <template>
 	<section class="w-full mt-8">
-		<h5 class="text-xl font-semibold text-heading text-center mb-6">Meetings</h5>
+		<h5 class="text-xl font-semibold text-heading text-center mb-6">Gospel</h5>
 
 		<div class="sm:hidden">
-			<label for="tabs-icons" class="sr-only">Select your country</label>
+			<label for="tabs-icons" class="sr-only">Select Gospel Status</label>
 			<select id="tabs-icons" v-model="tabs"
 				class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
 				<option value="all">All</option>

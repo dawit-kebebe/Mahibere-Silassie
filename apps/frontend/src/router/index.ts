@@ -17,6 +17,31 @@ const managerRoute: RouteRecordRaw = {
             component: () => import('@/pages/Home.vue')
         },
         {
+            name: 'ManagerContribution',
+            path: 'contribution',
+            component: () => import('@/pages/manager/Contribution.vue')
+        },
+        {
+            name: 'ManagerEmergencyFund',
+            path: 'emergency-fund',
+            component: () => import('@/pages/manager/EmergencyFund.vue')
+        },
+        {
+            name: 'ManagerGospel',
+            path: 'gospel',
+            component: () => import('@/pages/manager/Gospel.vue')
+        },
+        {
+            name: 'ManagerPilgrim',
+            path: 'pilgrim',
+            component: () => import('@/pages/manager/Pilgrim.vue')
+        },
+        {
+            name: 'ManagerTribute',
+            path: 'tribute',
+            component: () => import('@/pages/manager/Tribute.vue')
+        },
+        {
             name: 'ManagerMembers',
             path: 'members',
             component: () => import('@/pages/manager/Members.vue'),
@@ -52,6 +77,31 @@ export const navRoutes = (userStore: UserStore | null): RouteRecordRaw[] => {
                     redirect: '/manager/members'
                 },
                 {
+                    name: 'Contribution',
+                    path: '/manager/contribution',
+                    redirect: '/manager/contribution'
+                },
+                {
+                    name: 'Emergency Fund',
+                    path: '/manager/emergency-fund',
+                    redirect: '/manager/emergency-fund'
+                },
+                {
+                    name: 'Gospel',
+                    path: '/manager/gospel',
+                    redirect: '/manager/gospel'
+                },
+                {
+                    name: 'Pilgrim',
+                    path: '/manager/pilgrim',
+                    redirect: '/manager/pilgrim',
+                },
+                {
+                    name: 'Tribute',
+                    path: '/manager/tribute',
+                    redirect: '/manager/tribute',
+                },
+                {
                     name: 'Meetings',
                     path: '/manager/meetings',
                     redirect: '/manager/meetings'
@@ -62,7 +112,7 @@ export const navRoutes = (userStore: UserStore | null): RouteRecordRaw[] => {
                     redirect: '/manager/reports'
                 }
             ];
-        
+
         default:
             return [];
     }
